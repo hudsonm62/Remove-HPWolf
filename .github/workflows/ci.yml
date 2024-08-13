@@ -1,0 +1,25 @@
+name: CI Tests
+
+on: [push]
+
+jobs:
+  validate-script:
+    name: Validate Script
+    runs-on: windows-latest
+
+    steps:
+      - name: ⚙ Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: PS Version Table
+        run: $PSVersionTable
+        shell: pwsh
+
+      - name: Run Test-ScriptFileInfo
+        run: Test-ScriptFileInfo -Path ".\Remove-HPWolf.ps1" -ErrorAction Stop
+        shell: pwsh
+
+      - name: Publish-Script -WhatIf
+        shell: pwsh
+        run: |
+          Publish-Script -WhatIf -Path ".\Remove-HPWolf.ps1" -NuGetApiKey ${{ secrets.NUGET_KEY }} -Verbose -ErrorAction Stop
