@@ -14,12 +14,6 @@ PowerShell Script to search for and remove [HP Wolf Security](https://www.hpwolf
 Install-Script "Remove-HPWolf"
 ```
 
-### One-Liner Script Execution
-
-```sh
-irm ziroau.com/r/remove-hpwolf | iex
-```
-
 ## Usage
 
 Simply run the following command in PowerShell:
